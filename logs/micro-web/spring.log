@@ -1,0 +1,9 @@
+2023-07-14 05:13:07.491  INFO 20140 --- [main] com.auto17.AppWeb                        : Starting AppWeb on DESKTOP-MIBLOVI with PID 20140 (C:\Users\G\Desktop\WebAddFacialAuth-master\micro-web\target\classes started by G in C:\Users\G\Desktop\WebAddFacialAuth-master)
+2023-07-14 05:13:07.506  INFO 20140 --- [main] com.auto17.AppWeb                        : The following profiles are active: dev
+2023-07-14 05:13:10.802  INFO 20140 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-14 05:13:10.813  INFO 20140 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.26]
+2023-07-14 05:13:11.172  INFO 20140 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-14 05:13:13.399  INFO 20140 --- [main] com.auto17.AppWeb                        : Started AppWeb in 7.045 seconds (JVM running for 22.252)
+2023-07-14 05:13:32.210  INFO 20140 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-14 05:13:32.485  INFO 20140 --- [http-nio-8080-exec-2] c.a.W.controller.DashboardController     : login user=null
+2023-07-14 05:13:32.488 ERROR 20140 --- [http-nio-8080-exec-2] c.a.W.controller.DashboardController     : user is not login
