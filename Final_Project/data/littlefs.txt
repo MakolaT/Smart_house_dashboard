@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LED Control</title>
+</head>
+<body>
+  <h1>LED Control</h1>
+  <button onclick="turnOn()">Turn On</button>
+  <button onclick="turnOff()">Turn Off</button>
+
+  <script>
+    function turnOn() {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "/ledon", true);
+      xhr.send();
+    }
+
+    function turnOff() {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "/ledoff", true);
+      xhr.send();
+    }
+  </script>
+</body>
+</html>
