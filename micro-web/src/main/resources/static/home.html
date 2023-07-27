@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Home</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="icon" href="images/logo.svg" type="image/icon type" />
+    <link
+      href="https://kit-pro.fontawesome.com/releases/v5.15.4/css/pro.min.css"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <style>
+      /* Add responsive styles here */
+      @media screen and (max-width: 600px) {
+        .dashboard {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .box1,
+        .box2 {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+
+        .row1,
+        .row2 {
+          flex-direction: column;
+        }
+      }
+      .logout-container {
+        margin-left: 65%;
+      }
+    </style>
+  </head>
+  <body onload="startTime();">
+    <div class="container">
+      <div class="section">
+        <div class="menu">
+          <div class="img active" onclick="navigateTo('home.html')">
+            <i class="fas fa-home menuicons"></i>
+          </div>
+          <!-- <div class="img" onclick="navigateTo('http://172.20.6.11')">
+            <i class="fas fa-lightbulb menuicons"></i>
+          </div> -->
+          <div class="img" onclick="navigateTo('bolt.html')">
+            <i class="fas fa-bolt menuicons"></i>
+          </div>
+          <div class="img" onclick="navigateTo('info.html')">
+            <i class="fas fa-shield-alt menuicons"></i>
+          </div>
+          <div class="img" onclick="navigateTo('index.html')">
+            <i class="fas fa-user-friends menuicons"></i>
+          </div>
+          <div class="img" onclick="navigateTo('cog.html')">
+            <i class="fas fa-cog menuicons"></i>
+          </div>
+          <div class="img" onclick="navigateTo('index.html')">
+            <i class="fas fa-user menuicons"></i>
+          </div>
+        </div>
+
+        <div class="body">
+          <div class="flex">
+            <div class="search-container">
+              <input type="text" name="" class="search" placeholder="Search" />
+            </div>
+            <div class="logout-container">
+              <!-- <a class="dropdown-item" href="login.html">Logout</a> -->
+              <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    id="navbarDropdown"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    ><i class="fas fa-user fa-fw"></i
+                  ></a>
+                  <ul
+                    class="dropdown-menu dropdown-menu-end"
+                    aria-labelledby="navbarDropdown">
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <a class="dropdown-item" href="login.html">Logout</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="offset"></div>
+          </div>
+
+          <div class="flex">
+            <div class="summary flex">
+              <div class="content">
+                <span class="Goodmorning" id="myParagraph">Good Morning</span>
+                <!-- <span class="sub">Have a nice pleasant day</span> -->
+                <div class="datetime">
+                  <p style="margin-right: 30px" id="date"></p>
+                  <p id="time"></p>
+                </div>
+                <!-- <span class="tempsymbol"
+                    ><i class="fas fa-clouds cloud"></i
+                    ><span class="cloudy"> Cloudy</span></span
+                  > -->
+                <div class="flex cloud">
+                  <i class="fas fa-temperature-low"></i>
+                  <!-- <span class="twentyseven">27 degree</span> -->
+                  <span id="temperature"></span>
+                  <!-- <br />
+                  <span id="humidity"></span> -->
+                </div>
+
+                <div class="flex cloud">
+                  <span class="whether"
+                    >The weather will be cloudy outside. <br />
+                    Make sure you take an umbrella while going.</span
+                  >
+                </div>
+              </div>
+              <div class="image"><img src="images/tea.png" /></div>
+            </div>
+            <div class="flex tile">
+              <span class="head">Electricity Used </span>
+              <!-- <span class="subtitle">(Till 12-11-2020)</span> -->
+              <span id="Watt"><strong style="color: white"></strong></span>
+
+              <span id="current"></span>
+            </div>
+            <div class="flex tile1">
+              <span class="head">Cost</span>
+              <!-- <span class="subtitle">(Till 12-11-2020)</span> -->
+              <!-- <span class="tariff">2870</span> -->
+              <span id="tariff"><strong style="color: white"></strong></span>
+            </div>
+          </div>
+          <!-- start here -->
+          <div class="devices">
+            <div class="row1">
+              <div class="box">
+                <p>Living Room</p>
+                <img src="pic_bulboff.gif" alt="light" id="lightimg1" />
+                <!-- <i
+                  class="fas fa-lightbulb-on light"
+                  id="lighton1"
+                  style="width: 25px; height: 25px; color: #3976f6"></i> -->
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    id="lightswitch1"
+                    class="light-switch"
+                    onchange="lightOnOff('lightimg1')" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+
+              <div class="box">
+                <p>Kitchen Room</p>
+                <img src="pic_bulboff.gif" alt="light" id="lightimg2" />
+                <!-- <i
+                  class="fas fa-lightbulb-on light"
+                  id="lighton2"
+                  style="width: 25px; height: 25px; color: #3976f6"></i> -->
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    id="lightswitch2"
+                    onchange="lightOnOff('lightimg2')" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+
+              <div class="box">
+                <p>Bed Room</p>
+                <img src="pic_bulboff.gif" alt="light" id="lightimg3" />
+                <!-- <i
+                  class="fas fa-lightbulb-on light"
+                  id="lighton3"
+                  style="width: 25px; height: 25px; color: #3976f6"></i> -->
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    id="lightswitch3"
+                    onchange="lightOnOff('lightimg3')" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+
+              <div class="box">
+                <p>Bed Lamp</p>
+                <img src="pic_bulboff.gif" alt="light" id="bedlampimg1" />
+                <!-- <i
+                  class="fas fa-lightbulb-on light"
+                  id="bedlampon1"
+                  style="width: 25px; height: 25px; color: #3976f6"></i> -->
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    id="bedlampswitch1"
+                    onchange="lightOnOff('bedlampimg1')" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="row2">
+              <div class="box">
+                <p>Living Room</p>
+                <img src="images/fan.svg" alt="fan" id="fan1" />
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    id="fanswitch1"
+                    onchange="fanRotate('fanswitch1','fan1')" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+
+              <div class="box">
+                <p>Kitchen Room</p>
+                <img src="images/fan.svg" alt="fan" id="fan2" />
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    id="fanswitch2"
+                    onchange="fanRotate('fanswitch2','fan2')" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+
+              <div class="box">
+                <p>Bed Room</p>
+                <img src="images/fan.svg" alt="fan" id="fan3" />
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    id="fanswitch3"
+                    onchange="fanRotate('fanswitch3','fan3')" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+
+              <div class="box">
+                <p>Dining Room</p>
+                <img src="images/fan.svg" alt="fan" id="fan4" />
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    id="fanswitch4"
+                    onchange="fanRotate('fanswitch4','fan4')" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js"></script>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+      // import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
+      import {
+        getDatabase,
+        ref,
+        onValue,
+      } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+      const firebaseConfig = {
+        apiKey: "AIzaSyDgvrI96V3QE7iF7BNDzYMttIYzzxN4WqY",
+        authDomain: "smart-house-cbef7.firebaseapp.com",
+        databaseURL: "https://smart-house-cbef7-default-rtdb.firebaseio.com",
+        projectId: "smart-house-cbef7",
+        storageBucket: "smart-house-cbef7.appspot.com",
+        messagingSenderId: "713221705620",
+        appId: "1:713221705620:web:310a20e28d9f3b8c4d0981",
+        measurementId: "G-0XDH7YE1BM",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      //   const analytics = getAnalytics(app);
+      const database = getDatabase(app);
+
+      function updateTemperatureReadings() {
+        // Read the temperature data from Firebase
+        onValue(ref(database, "temperature"), (snapshot) => {
+          const data = snapshot.val();
+          const currentTime = new Date().toLocaleTimeString();
+          temperatureChart.data.labels.push(currentTime);
+          temperatureChart.data.datasets[0].data.push(data);
+          temperatureChart.update();
+        });
+      }
+
+      function updateDashboard(snapshot) {
+        var data = snapshot.val();
+        document.getElementById("temperature").innerText =
+          "Temperature: " + data.temperature + " °C";
+        // document.getElementById("humidity").innerText =
+        //   "Humidity: " + data.humidity + " %";
+        document.getElementById("current").innerText =
+          "Current: " + data.current + " A";
+        document.getElementById("Watt").innerText =
+          "Power: " + data.Watt + " W";
+        document.getElementById("tariff").innerText =
+          "Tariff: R " + data.tariff;
+      }
+
+      // Listen for data changes in Firebase
+      onValue(ref(database), (snapshot) => {
+        updateDashboard(snapshot);
+        updateTemperatureReadings();
+      });
+
+      //updateTemperatureReadings();
+    </script>
+    <script src="js/smart.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
